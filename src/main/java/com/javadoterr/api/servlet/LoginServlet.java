@@ -46,10 +46,9 @@ public class LoginServlet extends HttpServlet {
 				resp.sendRedirect("login.jsp");
 				return;
 			}else {
-				out.println("<h2> Welcome "+ user.getUserName() + " </h2>");
-				
 				
 				httpSession.setAttribute("current-user", user);
+				
 				if(user.getUserType().equals("admin")) {
 					//if - user - admin - admin.jsp
 					resp.sendRedirect("admin.jsp");

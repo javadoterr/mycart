@@ -1,3 +1,12 @@
+<%@page import="com.javadoterr.api.entity.User"%>
+<%
+
+	User user1 = (User) session.getAttribute("current-user");
+
+%>
+
+
+
 <nav class="navbar navbar-expand-lg navbar-dark custom-bg">
   <div class="container">
     <a class="navbar-brand" href="index.jsp">MyCart</a>
@@ -22,12 +31,31 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-      	<li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="login.jsp">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="register.jsp">Register</a>
-        </li>
+      
+      	<%
+      		if(user1 == null){
+      	%>
+      		<li class="nav-item">
+          		<a class="nav-link active" aria-current="page" href="login.jsp">Login</a>
+        	</li>
+        	<li class="nav-item">
+          		<a class="nav-link active" aria-current="page" href="register.jsp">Register</a>
+        	</li>
+      	
+      	<% 		
+      		}else {
+      	%>
+      		<li class="nav-item">
+          		<a class="nav-link active" aria-current="page" href="#"><%= user1.getUserName() %></a>
+        	</li>
+        	<li class="nav-item">
+          		<a class="nav-link active" aria-current="page" href="LogoutServlet">Logout</a>
+        	</li>
+      	
+      	<% 			
+      		}
+      	%>
+      
       </ul>
     </div>
   </div>
