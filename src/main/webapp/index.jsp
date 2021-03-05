@@ -8,10 +8,9 @@
 <title>Index</title>
 </head>
 <body>
-	<h2>Session Factory Object</h2>
+	<h2>Creating connectin factory</h2>
 	<%
 		out.println(FactoryProvider.getFactory());
-	
 	%>
 </body>
 </html>
