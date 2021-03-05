@@ -9,6 +9,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -25,7 +26,7 @@ public class RegisterServlet extends HttpServlet {
 	}
 
 	@Override
-	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
+	public void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		res.setContentType("text/html;charset=UTF-8");
 		try (PrintWriter out = res.getWriter()) {
 			
@@ -57,8 +58,12 @@ public class RegisterServlet extends HttpServlet {
 				tx.commit();
 				session.close();
 				
-				out.println("Successfully saved!!!!");
-				out.println("<br> User Id is : "+ userId);
+				//storing message in session
+				HttpSession httpSession = req.getSession();
+				httpSession.setAttribute("message", "Registration Successful !! with user Id - "+ userId);
+				res.sendRedirect("register.jsp");
+				return;
+				
 				
 			} catch (Exception e) {
 				e.printStackTrace();

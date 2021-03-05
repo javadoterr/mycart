@@ -13,7 +13,10 @@
 	<div class="container-fluid">
 		<div class="row mt-4">
 		<div class="col-md-4 offset-md-4">
+		
 			<div class="card">
+				<!-- displaying message -->
+				<%@ include file="./message.jsp" %>
 				<div class="card-body">
 					<h3 class="text-center my-3">Sign Up Here !!</h3>
 						<form action="RegisterServlet">
