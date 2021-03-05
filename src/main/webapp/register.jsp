@@ -10,12 +10,13 @@
 <body>
 	<!-- navbar added  -->
 	<%@ include file="./navbar.jsp" %>
-	<div class="row mt-4">
+	<div class="container-fluid">
+		<div class="row mt-4">
 		<div class="col-md-4 offset-md-4">
 			<div class="card">
 				<div class="card-body">
 					<h3 class="text-center my-3">Sign Up Here !!</h3>
-						<form action="">
+						<form action="RegisterServlet">
 							<div class="">
 			    				<label for="name" class="form-label">User Name</label>
 			    				<input type="text" class="form-control" id="name" name="userName" placeholder="Enter your name" aria-describedby="nameHelp">
@@ -43,6 +44,7 @@
 						</form>
 				</div>
 			</div>
+		</div>
 		</div>
 	</div>
 </body>
