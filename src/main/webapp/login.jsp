@@ -19,6 +19,8 @@
 						<h3>Login here</h3>
 					</div>
 					<div class="card-body">
+					
+						<%@ include file="./message.jsp" %>
 						<form action="LoginServlet" method="post">
 							<div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Email address</label> 
@@ -27,7 +29,7 @@
 							</div>
 							<div class="mb-3">
 								<label for="exampleInputPassword1" class="form-label">Password</label>
-								<input type="password" name="passowrd" class="form-control" id="exampleInputPassword1">
+								<input type="password" name="password" class="form-control" id="exampleInputPassword1">
 							</div>
 							<a href="register.jsp">if not register! Click Here</a>
 							<div class="mb-3 text-center mt-2">
