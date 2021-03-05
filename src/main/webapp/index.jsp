@@ -9,6 +9,8 @@
 <title>MyCart - Home</title>
 </head>
 <body>
+	<!-- navbar added  -->
+	<%@ include file="./navbar.jsp" %>
 	<h2>Creating connectin factory</h2>
 	<%
 		out.println(FactoryProvider.getFactory());

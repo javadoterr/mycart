@@ -8,6 +8,8 @@
 <title>about</title>
 </head>
 <body>
+	<!-- navbar added  -->
+	<%@ include file="./navbar.jsp" %>
 	
 	<h2>This is about page</h2>
 </body>
