@@ -1,3 +1,7 @@
+<%@page import="com.javadoterr.api.entity.Category"%>
+<%@page import="java.util.List"%>
+<%@page import="com.javadoterr.api.helper.FactoryProvider"%>
+<%@page import="com.javadoterr.api.dao.CategoryDao"%>
 <%@page import="com.javadoterr.api.entity.User"%>
 <%
 	User user = (User) session.getAttribute("current-user");
@@ -75,7 +79,7 @@
 		<!-- second row -->
 		<div class="row mt-4">
 			<div class="col-md-6">
-				<div class="card" data-bs-toggle="modal" data-bs-target="#add-category-model">
+				<div class="card" data-bs-toggle="modal" data-bs-target="#add-category-modal">
 					<div class="card-body text-center">
 						<div class="container">
 							<img style="max-width: 120px;" class="img-fluid rounded-circle" alt="user_icon" src="./img/add categories.png">
@@ -86,7 +90,7 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="card">
+				<div class="card" data-bs-toggle="modal" data-bs-target="#add-product-modal">
 					<div class="card-body text-center">
 						<div class="container">
 							<img style="max-width: 120px;" class="img-fluid rounded-circle" alt="user_icon" src="./img/add products.png">
@@ -102,7 +106,7 @@
 	
 	<!-- add category model -->
 	<!-- Modal -->
-	<div class="modal fade" id="add-category-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="add-category-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog model-lg">
 	    <div class="modal-content">
 	      <div class="modal-header custom-bg text-white">
@@ -130,7 +134,88 @@
 	  </div>
 	</div>
 	<!-- end of  add category model -->
-			
+	<!-- ----------------------------------------- -->
+	<!-- start of  add product model -->
+		<!-- Modal -->
+		<div class="modal fade" id="add-product-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Product details</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		        <!-- start form -->
+		        <form action="">
+		        	
+		        	<!-- product title  -->
+		        	<div class="form-group mb-2">
+		        		<input type="text" class="form-control" placeholder="Enter title of product" name="pName" required="required"/>
+		        	</div>
+		        	<!-- product description -->
+		        	<div class="form-group mb-2">
+		        		<textarea rows="3" cols="" class="form-control" placeholder="enter product description" name="pDesc"></textarea>
+		        	</div>
+		        	
+		        	<!-- product price -->
+		        	<div class="form-group mb-2">
+		        		<input type="number" class="form-control" placeholder="Enter price of product" name="pPrice" required="required"/>
+		        	</div>
+		        	
+		        	<!-- product discount -->
+		        	<div class="form-group mb-2">
+		        		<input type="number" class="form-control" placeholder="Enter product discount" name="pDiscount" required="required"/>
+		        	</div>
+		        	
+		        	<!-- product quantity -->
+		        	<div class="form-group mb-2">
+		        		<input type="number" class="form-control" placeholder="Enter product qnantity" name="pQuantity" required="required"/>
+		        	</div>
+		        	
+		        	<!-- product categories  -->
+		        	<%
+		        		CategoryDao categoryDao = new  CategoryDao(FactoryProvider.getFactory());
+		        		List<Category> list =  categoryDao.getCategories();
+		        	
+		        	%>
+		        	
+		        	<div class="form-group mb-2 ">
+		        		<select name="catId" class="form-control" id="">
+		        			
+		        			<%
+		        				for(Category c: list) {
+		        			
+		        			%>		
+		        			<option value="<%= c.getCategoryId() %>"><%= c.getCategoryTitle() %></option>
+		        			<%
+		        				}
+		        			%>
+		        		</select>
+		        	</div>
+		        	
+		        	<!-- product file -->
+		        	<div class="form-group mb-2">
+		        		<label for="pPhoto" class="form-label">Select Product Photo</label>
+		        		<input type="file" class="form-control" id="pPhoto" name="pPhoto" required="required">
+		        	</div>
+		        	
+		        	<!-- Submit button -->
+		        	<div class="container text-center">
+		        		<button type="submit" class="btn btn-outline-success">Add Product</button>
+		        		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		        	</div>
+		        	
+		        </form> 
+		        <!-- end form -->
+		      </div>
+		      <div class="modal-footer">
+		        
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	<!-- end of  add product model -->
+	
 	
 	
 	

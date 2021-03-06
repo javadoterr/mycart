@@ -1,10 +1,11 @@
 package com.javadoterr.api.dao;
 
-import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.javadoterr.api.entity.Category;
 
@@ -31,6 +32,17 @@ public class CategoryDao {
 		return catId;
 	}
 	
+	
+	public List<Category> getCategories(){
+		
+		Session session = this.factory.openSession();
+		String selectCategoryQuery = "from Category";
+		Query<Category> query= session.createQuery(selectCategoryQuery, Category.class);
+		List<Category> categoryList = query.list();
+		
+		return categoryList;
+		
+	}
 	
 
 }
