@@ -32,6 +32,11 @@
 	<%@ include file="./navbar.jsp" %>
 	
 	<div class="container admin">
+	
+		<div class="container-fluid mt-3">
+			<%@ include file="./message.jsp" %>
+		</div>
+	
 		<div class="row mt-4">
 			<div class="col-md-4">
 				<div class="card">
@@ -105,7 +110,10 @@
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	        <form action="">
+	        <form action="ProductOperationServlet" method="post" >
+	        
+	        	<input type="hidden" name="operation" value="addCategory" />
+	        
 	        	<div class="form-group">
 	        		<input type="text" class="form-control" name="catTitle" placeholder="Enter Category Title" required="required"/>
 	        	</div>
@@ -117,9 +125,6 @@
 	        		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 	        	</div>
 	        </form>
-	      </div>
-	      <div class="modal-footer">
-	        
 	      </div>
 	    </div>
 	  </div>
