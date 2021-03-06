@@ -31,7 +31,7 @@
 	<!-- navbar added  -->
 	<%@ include file="./navbar.jsp" %>
 	
-	<div class="container">
+	<div class="container admin">
 		<div class="row mt-4">
 			<div class="col-md-4">
 				<div class="card">
@@ -70,7 +70,7 @@
 		<!-- second row -->
 		<div class="row mt-4">
 			<div class="col-md-6">
-				<div class="card">
+				<div class="card" data-bs-toggle="modal" data-bs-target="#add-category-model">
 					<div class="card-body text-center">
 						<div class="container">
 							<img style="max-width: 120px;" class="img-fluid rounded-circle" alt="user_icon" src="./img/add categories.png">
@@ -95,7 +95,36 @@
 	
 	</div>
 	
-	
+	<!-- add category model -->
+	<!-- Modal -->
+	<div class="modal fade" id="add-category-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog model-lg">
+	    <div class="modal-content">
+	      <div class="modal-header custom-bg text-white">
+	        <h5 class="modal-title" id="exampleModalLabel">Fill Category Details </h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	        <form action="">
+	        	<div class="form-group">
+	        		<input type="text" class="form-control" name="catTitle" placeholder="Enter Category Title" required="required"/>
+	        	</div>
+	        	<div class="form-group mdt-2">
+	        		<textarea class="form-control" rows="5" cols="" placeholder="Enter Category Description" name="catDescription" required="required"></textarea>
+	        	</div>
+	        	<div class="container mt-2 text-center">
+	        		<button type="submit" class="btn btn-outline-success">Add Category</button>
+	        		<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+	        	</div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- end of  add category model -->
 			
 	
 	
