@@ -1,8 +1,11 @@
 package com.javadoterr.api.dao;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.javadoterr.api.entity.Product;
 
@@ -40,4 +43,25 @@ public class ProductDao {
 		return f;
 	}
 
+	
+	public List<Product> getAllProducts(){
+			
+		List<Product> products = null;
+		
+		try {
+			
+			Session session = this.factory.openSession();
+			Query<Product> query = session.createQuery("from Product", Product.class);
+			products = query.list();
+			
+			
+			session.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return products;
+	}
+	
 }
