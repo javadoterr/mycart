@@ -1,6 +1,10 @@
 package com.javadoterr.api.servlet;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 
 import javax.persistence.criteria.CriteriaBuilder.In;
@@ -26,6 +30,7 @@ public class ProductOperationServlet extends HttpServlet {
 		super();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -79,6 +84,33 @@ public class ProductOperationServlet extends HttpServlet {
 				// save product
 				ProductDao productDao = new ProductDao(FactoryProvider.getFactory());
 				productDao.saveProduct(product);
+				
+				
+				//upload photo
+				String path = req.getRealPath("img")+ File.separator +"products"+File.separator+part.getSubmittedFileName();
+				System.out.println(path);
+				
+				//uploading code
+				try {
+					
+				
+				FileOutputStream fos = new FileOutputStream(path);
+				
+				InputStream is = part.getInputStream();
+				
+				//reading data
+				
+				byte[] data = new byte[is.available()];
+				
+				is.read(data);
+				
+				//writing data
+				fos.write(data);
+				fos.close();
+				
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 				HttpSession httpSession = req.getSession();
 				httpSession.setAttribute("message", "Product is added successfully..");
