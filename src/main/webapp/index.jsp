@@ -16,14 +16,27 @@
 </head>
 <body>
 	<!-- navbar added  -->
-	<%@ include file="./navbar.jsp" %>
-	
+	<%@ include file="./navbar.jsp" %>	
 	<div class="container">
 		<div class="row mt-3 mx-2">
 		
 			<%
+			
+				String cat =  request.getParameter("category");
+				
+			
 				ProductDao dao = new ProductDao(FactoryProvider.getFactory());
-				List<Product> list =  dao.getAllProducts();
+				List<Product> list = null;
+				
+				if(cat == null || cat.trim().equals("all")){
+					list =  dao.getAllProducts();	
+				}else{
+					int cid = Integer.parseInt(cat.trim());
+					list = dao.getAllProductsByCategoryId(cid);
+				}
+				
+				
+				
 				
 				CategoryDao cDao = new CategoryDao(FactoryProvider.getFactory());
 				List<Category> clist =  cDao.getCategories();
@@ -33,22 +46,53 @@
 			<div class="col-md-2">
 
 				<div class="list-group">
-					<a href="#" class="list-group-item list-group-item-action active"aria-current="true">
+					<a href="index.jsp?category=all" class="list-group-item list-group-item-action active"aria-current="true">
 						All Products 
 					</a>
 					
 					<%
 						for(Category c: clist){
 					%>
-						<a href="#" class="list-group-item list-group-item-action"><%= c.getCategoryTitle() %></a>
+						<a href="index.jsp?category=<%= c.getCategoryId() %>" class="list-group-item list-group-item-action"><%= c.getCategoryTitle() %></a>
 					<% 
 						}
 					%>
 				</div>
 			</div>
 			<!-- show products -->
-			<div class="col-md-8 ">
-				<div class="row mt-4" data-masonry='{"percentPosition": true }'>				
+			<div class="col-md-10">
+					<div class="container">
+					    <div class="row" data-masonry='{"percentPosition": true }'>
+					    	<!-- traversion products -->
+							<%
+								for(Product p : list){
+							%>
+					        <div class="col-md-4 py-3">
+					            <div class="card border-primary">
+					            	<div class="container text-center">
+					            		<img src="img/products/<%= p.getpPhoto() %>" style="max-height: 100px; max-width: 100%; width: auto;" class="card-img-top" alt="...">
+					            	</div>
+					                <div class="card-body">
+					                    <h3 class="card-title"><%= p.getpName() %></h3>
+					                    <p class="card-text"><%= Helper.get10Words(p.getpDesc())%></p>
+					                </div>
+					                <div class="card-footer">
+										<button class="btn custom-bg text-white">Add to Cart</button>
+										<button class="btn btn-outline-primary">&#x20B9;<%= p.getpPrice() %></button>
+									</div>
+					            </div>
+					        </div>
+					        <% 
+								}
+								
+								if(list.size() == 0) {
+									out.println("<h3>No item in this category...</h3>");
+								}
+							%>
+					    </div>
+					</div>
+				
+				<%-- <div class="row mt-4" data-masonry='{"percentPosition": true }'>				
 					<div class="col-md-12">
 						<div class="card-columns">
 								<!-- traversion products -->
@@ -74,7 +118,7 @@
 								%>
 						</div>
 					</div>					 
-				</div>
+				</div> --%>
 			</div>
 		</div>		
 	</div>
