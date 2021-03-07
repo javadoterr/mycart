@@ -44,5 +44,29 @@ public class CategoryDao {
 		
 	}
 	
+	
+	public Category getCategoryById(int cid) {
+		
+		Category category = null;
+		
+		try {
+			
+			Session session = this.factory.openSession();
+			category = session.get(Category.class, cid);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return category;
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 
 }

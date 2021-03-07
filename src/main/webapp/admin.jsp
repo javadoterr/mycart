@@ -140,14 +140,17 @@
 		<div class="modal fade" id="add-product-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
-		      <div class="modal-header">
+		      <div class="modal-header custom-bg text-white">
 		        <h5 class="modal-title" id="exampleModalLabel">Product details</h5>
 		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      </div>
 		      <div class="modal-body">
+		      
 		        <!-- start form -->
-		        <form action="">
-		        	
+		        <form action="ProductOperationServlet" method="post" enctype="multipart/form-data">
+		        
+		        	<input type="hidden" name="operation" value="addProduct">
+		        
 		        	<!-- product title  -->
 		        	<div class="form-group mb-2">
 		        		<input type="text" class="form-control" placeholder="Enter title of product" name="pName" required="required"/>
