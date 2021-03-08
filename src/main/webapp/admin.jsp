@@ -1,3 +1,5 @@
+<%@page import="java.util.Map"%>
+<%@page import="com.javadoterr.api.helper.Helper"%>
 <%@page import="com.javadoterr.api.entity.Category"%>
 <%@page import="java.util.List"%>
 <%@page import="com.javadoterr.api.helper.FactoryProvider"%>
@@ -19,6 +21,14 @@
 		
 	}
 
+%>
+<!-- list of Category  -->
+<%
+	CategoryDao categoryDao = new  CategoryDao(FactoryProvider.getFactory());
+	List<Category> list =  categoryDao.getCategories();
+	
+	//getting product and user count
+	 Map<String, Long> m =  Helper.getCounts(FactoryProvider.getFactory());
 %>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -48,7 +58,7 @@
 						<div class="container">
 							<img style="max-width: 120px;" class="img-fluid rounded-circle" alt="user_icon" src="./img/users.png">
 						</div>
-						<h2>2345</h2>
+						<h2><%= m.get("userCount") %></h2>
 						<h2 class="text-uppercase">Users</h2>
 					</div>
 				</div>
@@ -59,7 +69,7 @@
 						<div class="container">
 							<img style="max-width: 120px;" class="img-fluid rounded-circle" alt="user_icon" src="./img/categories.png">
 						</div>
-						<h2>678</h2>
+						<h2><%= list.size() %></h2>
 						<h2 class="text-uppercase">Categories</h2>
 					</div>
 				</div>
@@ -70,7 +80,7 @@
 						<div class="container">
 							<img style="max-width: 120px;" class="img-fluid rounded-circle" alt="user_icon" src="./img/products.png">
 						</div>
-						<h2>345</h2>
+						<h2><%= m.get("productCount") %></h2>
 						<h2 class="text-uppercase">Products</h2>
 					</div>
 				</div>
@@ -176,11 +186,7 @@
 		        	</div>
 		        	
 		        	<!-- product categories  -->
-		        	<%
-		        		CategoryDao categoryDao = new  CategoryDao(FactoryProvider.getFactory());
-		        		List<Category> list =  categoryDao.getCategories();
 		        	
-		        	%>
 		        	
 		        	<div class="form-group mb-2 ">
 		        		<select name="catId" class="form-control" id="">
