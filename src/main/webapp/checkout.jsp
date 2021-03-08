@@ -1,3 +1,20 @@
+<%
+
+	User user = (User) session.getAttribute("current-user");
+	if(user == null){
+		session.setAttribute("message", "You are not logged in !! Login first to access checkout page");
+		response.sendRedirect("login.jsp");
+		return;
+	}else{
+		
+		
+		
+	}
+
+
+%>
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -8,11 +25,8 @@
 <title>checkout</title>
 </head>
 <body>
-
 	<!-- navbar added  -->
 	<%@ include file="./navbar.jsp" %>
-	
-	
 	<div class="container">
 		<div class="row mt-5">
 			<div class="col-md-6">
@@ -34,15 +48,23 @@
 						<form action="#">
 							<div class="form-group">
 								<label for="email">Email :</label>
-								<input type="email" class="form-control" id="email" name="email" placeholder="enter your email">
+								<input type="email" class="form-control" id="email" 
+										value="<%= user.getUserEmail() %> " name="email" placeholder="enter your email">
 							</div>
 							<div class="form-group">
 								<label for="name">Name :</label>
-								<input type="text" class="form-control" id="name" name="name" placeholder="enter your name">
+								<input type="text" class="form-control" id="name" name="name" 
+								  value="<%= user.getUserName() %> " placeholder="enter your name">
+							</div>
+							<div class="form-group">
+								<label for="phone">Contact Phone :</label>
+								<input type="text" class="form-control" id="phone" name="phone" 
+								  value="<%= user.getUserPhone() %> " placeholder="enter your contact number">
 							</div>
 							<div class="form-group">
 								<label for="address">Address :</label>
-								<textarea class="form-control" id="address" name="address" placeholder="enter shipping address" rows="3" cols=""></textarea>
+								<textarea class="form-control" id="address" name="address"
+								   value="<%= user.getUserAddress() %> " placeholder="enter shipping address" rows="3" cols=""></textarea>
 							</div>
 							<div class="container mt-2 text-center">
 								<button class="btn btn-outline-success">Order Now</button>
