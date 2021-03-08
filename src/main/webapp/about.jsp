@@ -12,5 +12,8 @@
 	<%@ include file="./navbar.jsp" %>
 	
 	<h2>This is about page</h2>
+	
+	<!-- cart model added -->
+	<%@ include file="./common-modal.jsp" %>
 </body>
 </html>

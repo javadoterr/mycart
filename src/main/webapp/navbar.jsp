@@ -5,8 +5,6 @@
 
 %>
 
-
-
 <nav class="navbar navbar-expand-lg navbar-dark custom-bg">
   <div class="container">
     <a class="navbar-brand" href="index.jsp">MyCart</a>
@@ -31,6 +29,13 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
+      		<li class="nav-item">
+          		<a class="nav-link active" aria-current="page" href="#!" data-bs-toggle="modal" data-bs-target="#cart">
+          			<i class="fas fa-cart-plus" style="font-size: 20px;">
+          				<span class="ml-0 cart-items" > { 0 }</span>
+          			</i>
+          		</a>
+        	</li>
       
       	<%
       		if(user1 == null){

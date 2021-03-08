@@ -130,6 +130,8 @@
 	</div>
 
 
+<!-- cart model added -->
+	<%@ include file="./common-modal.jsp" %>
 
 
 </body>
