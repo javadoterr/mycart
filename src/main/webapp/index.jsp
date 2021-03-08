@@ -61,14 +61,14 @@
 			</div>
 			<!-- show products -->
 			<div class="col-md-10">
-					<div class="container">
+					<div class="container my-3">
 					    <div class="row" data-masonry='{"percentPosition": true }'>
 					    	<!-- traversion products -->
 							<%
 								for(Product p : list){
 							%>
 					        <div class="col-md-4 py-3">
-					            <div class="card border-primary">
+					            <div class="card border-primary product-card">
 					            	<div class="container text-center">
 					            		<img src="img/products/<%= p.getpPhoto() %>" style="max-height: 100px; max-width: 100%; width: auto;" class="card-img-top" alt="...">
 					            	</div>
@@ -76,9 +76,14 @@
 					                    <h3 class="card-title"><%= p.getpName() %></h3>
 					                    <p class="card-text"><%= Helper.get10Words(p.getpDesc())%></p>
 					                </div>
-					                <div class="card-footer">
+					                <div class="card-footer text-center">
 										<button class="btn custom-bg text-white">Add to Cart</button>
-										<button class="btn btn-outline-primary">&#x20B9;<%= p.getpPrice() %></button>
+										<button class="btn btn-outline-primary">
+											&#x20B9;<%= p.getPriceAfterApplyingDiscount() %>/- 
+											<span class="text-secondary discount-label"> 
+												&#x20B9;<%= p.getpPrice() %> , <%= p.getpDiscount() %> off
+											</span>
+										</button>
 									</div>
 					            </div>
 					        </div>
