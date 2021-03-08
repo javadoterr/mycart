@@ -19,3 +19,7 @@
 	background: #2c387e!important;
 	font-style: italic!important;
 }
+.index-page .product-card:hover {
+	background: #e2e2e2;
+	cursor: pointer;
+}

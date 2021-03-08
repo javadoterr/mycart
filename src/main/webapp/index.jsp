@@ -68,7 +68,7 @@
 								for(Product p : list){
 							%>
 					        <div class="col-md-4 py-3">
-					            <div class="card border-primary product-card">
+					            <div class="card border-primary">
 					            	<div class="container text-center">
 					            		<img src="img/products/<%= p.getpPhoto() %>" style="max-height: 100px; max-width: 100%; width: auto;" class="card-img-top" alt="...">
 					            	</div>
@@ -77,7 +77,8 @@
 					                    <p class="card-text"><%= Helper.get10Words(p.getpDesc())%></p>
 					                </div>
 					                <div class="card-footer text-center">
-										<button class="btn custom-bg text-white">Add to Cart</button>
+										<button class="btn custom-bg text-white"
+											 onclick="add_to_cart(<%= p.getpId()%>,'<%= p.getpName() %>', <%= p.getPriceAfterApplyingDiscount()%> )">Add to Cart</button>
 										<button class="btn btn-outline-primary">
 											&#x20B9;<%= p.getPriceAfterApplyingDiscount() %>/- 
 											<span class="text-secondary discount-label"> 
