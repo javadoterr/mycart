@@ -9,7 +9,7 @@ function add_to_cart(pid, pname, price){
 		products.push(product);
 		localStorage.setItem("cart", JSON.stringify(products));
 		
-		console.log("Product is added for the first time");
+		//console.log("Product is added for the first time");
 		
 	}else{
 		// cart is already present
@@ -30,7 +30,7 @@ function add_to_cart(pid, pname, price){
 			});
 			localStorage.setItem("cart", JSON.stringify(pcart));
 			
-			console.log("Product quantity is increased");
+			//console.log("Product quantity is increased");
 			
 		}else{
 			//we have to add the product
@@ -38,7 +38,7 @@ function add_to_cart(pid, pname, price){
 			pcart.push(product);
 			localStorage.setItem("cart", JSON.stringify(pcart));
 			
-			console.log("Product is added");
+			//console.log("Product is added");
 		}
 	}
 	updateCart();
@@ -92,10 +92,11 @@ function updateCart() {
 		});
 		
 		table =table+
-		`
-		<tr><td colspan='5' class='text-right font-weight-bold m-5'>Total Price : ${totalPrice}</td></tr>
-		</table>`;
+			`
+			<tr><td colspan='5' class='text-right font-weight-bold m-5'>Total Price : ${totalPrice}</td></tr>
+			</table>`;
 		$(".cart-body").html(table);
+		$(".checkout-btn").removeClass('disabled');
 	}
 }
 
@@ -121,7 +122,9 @@ $(document).ready(function(){
 });
 
 
-
+function goToCheckout() {
+	window.location = "checkout.jsp";
+}
 
 
 

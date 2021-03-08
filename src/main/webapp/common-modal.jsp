@@ -14,7 +14,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary checkout-btn">CheckOut</button>
+        <button type="button" class="btn btn-primary checkout-btn" onclick="goToCheckout()">CheckOut
+        	<!-- <a href="checkout.jsp" class="text-white">CheckOut</a> -->
+       </button>
       </div>
     </div>
   </div>
